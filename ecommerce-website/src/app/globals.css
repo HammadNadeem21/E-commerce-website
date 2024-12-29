@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-img{
+    background-image: url('../../public/hero.jpg');
+}
 
 
 
