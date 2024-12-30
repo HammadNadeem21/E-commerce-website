@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Promotion from "@/components/Promotion";
 import Services from "@/components/Services";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
 
 <Hero/>
 <Services/>
+<Promotion/>
    </div>
   );
 }
