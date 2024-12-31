@@ -26,7 +26,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="p-0 text-2xl lg:hidden cursor-pointer"
+              className="p-0 text-2xl lg:hidden cursor-pointer text-myBlackHead"
               onClick={toggleNavbar}
             >
               {isClick ? (
