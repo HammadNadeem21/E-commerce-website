@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import { Button } from "./ui/button";
 
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import Link from "next/link";
 
 type SellingItems = {
   image: StaticImageData;
@@ -10,6 +11,8 @@ type SellingItems = {
   title: string;
   description: string;
   price: number;
+  category:string;
+  product:string
 };
 
 const BestSellingCards = ({
@@ -18,9 +21,14 @@ const BestSellingCards = ({
   title,
   description,
   price,
+  category,
+  product
 }: SellingItems) => {
   return (
-    <div className="w-[350px] h-[32rem] p-4 mx-auto shadow-xl rounded-xl relative bg-gray-200">
+    <div className="w-[350px] h-[32rem] p-4 mx-auto shadow-xl rounded-xl relative bg-gray-100">
+
+      <Link href={`/${category}/${product}`}>
+      {/* image-div */}
       <div className="block h-[20rem] rounded overflow-hidden">
         <Image
           src={image}
@@ -31,6 +39,7 @@ const BestSellingCards = ({
         />
       </div>
 
+{/* text-div */}
       <div className="mt-4">
         <h2 className=" text-lg text-myBlackHead font-semibold tracking-tight first:mt-0 line-clamp-1">
           {title}
@@ -42,6 +51,7 @@ const BestSellingCards = ({
 
         <p className="mt-2 scroll-m-20 text-base text-myBlackHead font-semibold tracking-tight  line-clamp-1">{`$${price}`}</p>
       </div>
+      </Link>
 
       <div>
         <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl absolute bottom-2 right-2">

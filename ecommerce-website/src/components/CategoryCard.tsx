@@ -4,14 +4,15 @@ import Link from "next/link";
 import React from "react";
 
 type CategoryImage = {
+  link: string;
   image: StaticImageData;
   title: string;
 };
 
-const CategoryCard = ({ image, title }: CategoryImage) => {
+const CategoryCard = ({link, image, title }: CategoryImage) => {
   return (
     <div className="mb-7 lg:mb-0  overflow-hidden z-10 mx-auto group relative h-[400px] rounded-xl">
-      <Link href={"#"}>
+      <Link href={`/${link}`}>
         <Image
           src={image}
           alt="Tops"

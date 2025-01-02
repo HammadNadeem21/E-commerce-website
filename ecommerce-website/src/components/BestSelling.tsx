@@ -12,6 +12,8 @@ const SellingCards = [
     title: "Women White Printed Shirt",
     description: "Best Quality Top For Women.",
     price: 100,
+    category: "tops",
+    product:"white-top"
   },
   {
     image: blackJacket,
@@ -19,6 +21,8 @@ const SellingCards = [
     title: "Men Black Jacket",
     description: "Best Quality Jacket For Mens.",
     price: 120,
+     category: "shirts",
+    product:"black-jacket"
   },
   {
     image: redSandles,
@@ -26,6 +30,8 @@ const SellingCards = [
     title: "Women Red Sandle",
     description: "Best Quality Sandle For Women.",
     price: 130,
+     category: "women-shoes",
+    product:"red-sandle"
   }
   
 ];
@@ -55,9 +61,13 @@ const BestSelling = () => {
             title={selling.title}
             description={selling.description}
             price={selling.price}
+            category={selling.category}
+            product={selling.product}
           />
         ))}
       </div>
+
+
     </div>
   );
 };

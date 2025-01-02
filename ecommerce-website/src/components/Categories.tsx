@@ -16,18 +16,18 @@ import CategoryCard from "./CategoryCard";
 
 // Mens
 const Mens = [
-  { image: shirts, title: "shirts" },
-  { image: pants, title: "Pants" },
-  { image: accessories, title: "accessories" },
-  { image: shoes, title: "shoes" },
+  {link: "shirts", image: shirts, title: "shirts" },
+  {link: "men-pants", image: pants, title: "Pants" },
+  {link: "accessories", image: accessories, title: "accessories" },
+  {link: "men-shoes", image: shoes, title: "shoes" },
 ];
 
 // Womens
 const Womens = [
-  { image: tops, title: "Tops" },
-  { image: womenpants, title: "Pants" },
-  { image: womenaccessories, title: "accessories" },
-  { image: womenshoes, title: "shoes" },
+  {link: "tops", image: tops, title: "Tops" },
+  {link: "women-pants", image: womenpants, title: "Pants" },
+  {link: "jewelry", image: womenaccessories, title: "accessories" },
+  {link: "women-shoes", image: womenshoes, title: "shoes" },
 ];
 
 const Categories = () => {
@@ -53,6 +53,7 @@ const Categories = () => {
         {Mens.map((category, index) => (
           <CategoryCard
             key={index}
+            link={category.link}
             image={category.image}
             title={category.title}
           />
@@ -71,6 +72,7 @@ const Categories = () => {
         {Womens.map((category, index) => (
           <CategoryCard
             key={index}
+            link={category.link}
             image={category.image}
             title={category.title}
           />

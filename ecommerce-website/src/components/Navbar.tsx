@@ -48,16 +48,16 @@ const Navbar = () => {
                     <summary>Mens</summary>
                     <ul className="p-2">
                       <li>
-                        <Link href={"#"}>Shirts</Link>
+                        <Link href={"/shirts"}>Shirts</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Pants</Link>
+                        <Link href={"/men-pants"}>Pants</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Acessories</Link>
+                        <Link href={"/accessories"}>Acessories</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Shoes</Link>
+                        <Link href={"/men-shoes"}>Shoes</Link>
                       </li>
                     </ul>
                   </details>
@@ -67,25 +67,25 @@ const Navbar = () => {
                     <summary>WOMENS</summary>
                     <ul className="p-2">
                       <li>
-                        <Link href={"#"}>Tops</Link>
+                        <Link href={"/tops"}>Tops</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Pants</Link>
+                        <Link href={"/women-pants"}>Pants</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Accessories/Jewelry</Link>
+                        <Link href={"/jewelry"}>Accessories/Jewelry</Link>
                       </li>
                       <li>
-                        <Link href={"#"}>Shoes</Link>
+                        <Link href={"/women-shoes"}>Shoes</Link>
                       </li>
                     </ul>
                   </details>
                 </li>
                 <li>
-                  <Link href={"#"}>About</Link>
+                  <Link href={"/about"}>About</Link>
                 </li>
                 <li>
-                  <Link href={"#"}>Contact</Link>
+                  <Link href={"/contact"}>Contact</Link>
                 </li>
               </ul>
             )}
