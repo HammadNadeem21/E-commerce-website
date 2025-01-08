@@ -25,7 +25,7 @@ const BestSellingCards = ({
   product
 }: SellingItems) => {
   return (
-    <div className="w-[350px] h-[32rem] p-4 mx-auto shadow-xl rounded-xl relative bg-gray-100">
+    <div className="max-w-[350px] h-[32rem] p-4 mx-auto shadow-xl rounded-xl relative bg-gray-100">
 
       <Link href={`/${category}/${product}`}>
       {/* image-div */}

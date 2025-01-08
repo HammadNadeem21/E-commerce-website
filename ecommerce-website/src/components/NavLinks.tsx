@@ -87,7 +87,7 @@ export function NavigationMenuDemo() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-myWhite">
               {mens.map((men) => (
-                <Link key={men.title} href={men.href}>
+                <Link key={men.title} href={men.href} legacyBehavior passHref>
                 <ListItem  title={men.title} >
                   {men.description}
                 </ListItem>
@@ -103,7 +103,7 @@ export function NavigationMenuDemo() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-myWhite">
               {womens.map((women) => (
-                <Link key={women.title} href={women.href}>
+                <Link key={women.title} href={women.href} legacyBehavior passHref>
                   <ListItem title={women.title}>{women.description}</ListItem>
                 </Link>
               ))}
