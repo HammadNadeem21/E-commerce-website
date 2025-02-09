@@ -7,7 +7,6 @@ export const products: Product[] = [
         image: ["/best-selling/blackJacket.webp", "/best-selling/blackJacket.webp"],
         slug: "black-jacket",
         price: 150,
-        discount:0,
         category:"shirts",
         description: "Good Quality Shirts",
         size:["S", "M", "L", "XL"],
