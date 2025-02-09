@@ -1,32 +1,31 @@
-import ProductComponent from "@/components/ProductComponent";
+"use client";
 import { Button } from "@/components/ui/button";
-import React from "react";
-
 import { FaShoppingCart, FaHeart, FaPlus, FaMinus } from "react-icons/fa";
+import { useAppSelector } from "../../store/hooks";
+import SlugComponent from "@/components/SlugComponent";
 
-const page = () => {
+const SlugPage = ({ params }: { params: { slug: string } }) => {
+  const product = useAppSelector((state) => state.product);
+  const slug = product.filter((val) => val.slug == params.slug);
+
+  console.log("slug", slug);
+
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
+    <div>
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          {/* image */}
-          {/* <img
-            alt="ecommerce"
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-            src="https://dummyimage.com/400x400"
-          /> */}
-          <ProductComponent/>
-          
+          {/* Image */}
+          <SlugComponent image={slug[0].image}/>
 
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             {/* category */}
-            <h2 className="scroll-m-20 text-sm font-semibold tracking-tight text-gray-500">
-              Women Tops
+            <h2 className="scroll-m-20 text-sm font-semibold tracking-tight text-gray-500 uppercase">
+              {slug[0].category}
             </h2>
 
             {/* heading */}
             <h1 className="mt-2 scroll-m-20 text-2xl font-semibold tracking-tight mb-1 text-myBlackHead">
-              Printed Top
+              {slug[0].title}
             </h1>
 
             {/* ratings */}
@@ -64,9 +63,7 @@ const page = () => {
               className="mt-2 leading-relaxed scroll-m-20 text-base font-normal 
           text-myBlackPara"
             >
-              Elevate your wardrobe with this elegant white printed top
-              featuring a stylish floral design. Perfect for casual outings or
-              semi-formal gatherings, this top combines comfort with chic.
+              {slug[0].description}
             </p>
 
             <div className="flex mt-6 items-center mb-5">
@@ -75,11 +72,13 @@ const page = () => {
                 <span className="mr-3 scroll-m-20 text-base font-semibold text-myBlackHead">
                   Color
                 </span>
-
-                <button className="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black" />
-                <button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black" />
-                <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black" />
-                <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black" />
+                {slug[0].color.map((item, i) => (
+                  <button
+                    key={i}
+                    className="border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none active:border-black focus:border-black"
+                    style={{ backgroundColor: item }}
+                  />
+                ))}
               </div>
 
               {/* size */}
@@ -93,27 +92,15 @@ const page = () => {
                     <option disabled selected>
                       Select Size
                     </option>
-                    <option>SM</option>
-                    <option>MD</option>
-                    <option>LG</option>
-                    <option>XL</option>
-                    <option>XXL</option>
+                    {slug[0].size.map((item, i) => (
+                      <option key={i}>{item}</option>
+                    ))}
+                    
+                  
                   </select>
                 </label>
 
-                <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
+            
               </div>
             </div>
 
@@ -129,7 +116,7 @@ const page = () => {
               </Button>
 
               <div className="mr-2 ml-2 scroll-m-20 text-base font-semibold tracking-tight">
-                1
+                {slug[0].quantity}
               </div>
 
               <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl w-fit h-fit">
@@ -141,9 +128,19 @@ const page = () => {
             <div className="divider"></div>
             <div className="flex items-center justify-between mt-5">
               {/* price */}
-              <span className="scroll-m-20 text-2xl font-semibold text-myBlackHead">
-                $58.00
+              <div>
+              <span className={`scroll-m-20 text-2xl font-semibold tracking-tight text-myBlackHead ${
+                slug[0]?.discount && slug[0].discount > 0 &&
+                "line-through decoration-2  decoration-myOrange/70"
+              }`}>
+                ${slug[0].price}
               </span>
+                {/* Discounted value */}
+            {slug[0]?.discount && slug[0].discount > 0 && (
+                <span className="ml-3 scroll-m-20 text-2xl font-semibold tracking-tight text-myBlackHead">${slug[0].price - (slug[0].price * slug[0].discount)/100}</span>
+              )
+            }
+              </div>
               {/* cart button */}
               <Button className="group bg-myBlackHead hover:bg-transparent text-myWhite hover:text-myBlackHead scroll-m-20 text-xs font-semibold tracking-tight rounded-xl ">
                 <FaShoppingCart className="mr-2 h-4 w-4 group-hover:text-myOrange duration-300" />
@@ -159,8 +156,8 @@ const page = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default page;
+export default SlugPage;

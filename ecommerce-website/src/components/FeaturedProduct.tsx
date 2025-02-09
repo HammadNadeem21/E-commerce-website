@@ -3,69 +3,71 @@ import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import womenWhiteShirt from "../../public/best-selling/womenWhiteShirt.webp";
-import blackJacket from "../../public/best-selling/blackJacket.webp";
-import redSandles from "../../public/best-selling/redSandles.jpg";
+
 import BestSellingCards from './BestSellingCards';
+import { useAppSelector } from '@/app/store/hooks';
 
 const FeaturedProduct = () => {
     // my data
-    const SellingCards = [
-        {
-          image: womenWhiteShirt,
-          alt: "Women-White-Shirt",
-          title: "Women White Printed Shirt",
-          description: "Best Quality Top For Women.",
-          price: 100,
-          category: "tops",
-          product:"white-top"
-        },
-        {
-          image: blackJacket,
-          alt: "Men-Black-Jacket",
-          title: "Men Black Jacket",
-          description: "Best Quality Jacket For Mens.",
-          price: 120,
-           category: "shirts",
-          product:"black-jacket"
-        },
-        {
-          image: redSandles,
-          alt: "Women-red-sandles",
-          title: "Women Red Sandle",
-          description: "Best Quality Sandle For Women.",
-          price: 130,
-           category: "women-shoes",
-          product:"red-sandle"
-        },       {
-            image: womenWhiteShirt,
-            alt: "Women-White-Shirt",
-            title: "Women White Printed Shirt",
-            description: "Best Quality Top For Women.",
-            price: 100,
-            category: "tops",
-            product:"white-top"
-          },
-          {
-            image: blackJacket,
-            alt: "Men-Black-Jacket",
-            title: "Men Black Jacket",
-            description: "Best Quality Jacket For Mens.",
-            price: 120,
-             category: "shirts",
-            product:"black-jacket"
-          },
-          {
-            image: redSandles,
-            alt: "Women-red-sandles",
-            title: "Women Red Sandle",
-            description: "Best Quality Sandle For Women.",
-            price: 130,
-             category: "women-shoes",
-            product:"red-sandle"
-          }
+    // const SellingCards = [
+    //     {
+    //       image: womenWhiteShirt,
+    //       alt: "Women-White-Shirt",
+    //       title: "Women White Printed Shirt",
+    //       description: "Best Quality Top For Women.",
+    //       price: 100,
+    //       category: "tops",
+    //       product:"white-top"
+    //     },
+    //     {
+    //       image: blackJacket,
+    //       alt: "Men-Black-Jacket",
+    //       title: "Men Black Jacket",
+    //       description: "Best Quality Jacket For Mens.",
+    //       price: 120,
+    //        category: "shirts",
+    //       product:"black-jacket"
+    //     },
+    //     {
+    //       image: redSandles,
+    //       alt: "Women-red-sandles",
+    //       title: "Women Red Sandle",
+    //       description: "Best Quality Sandle For Women.",
+    //       price: 130,
+    //        category: "women-shoes",
+    //       product:"red-sandle"
+    //     },       {
+    //         image: womenWhiteShirt,
+    //         alt: "Women-White-Shirt",
+    //         title: "Women White Printed Shirt",
+    //         description: "Best Quality Top For Women.",
+    //         price: 100,
+    //         category: "tops",
+    //         product:"white-top"
+    //       },
+    //       {
+    //         image: blackJacket,
+    //         alt: "Men-Black-Jacket",
+    //         title: "Men Black Jacket",
+    //         description: "Best Quality Jacket For Mens.",
+    //         price: 120,
+    //          category: "shirts",
+    //         product:"black-jacket"
+    //       },
+    //       {
+    //         image: redSandles,
+    //         alt: "Women-red-sandles",
+    //         title: "Women Red Sandle",
+    //         description: "Best Quality Sandle For Women.",
+    //         price: 130,
+    //          category: "women-shoes",
+    //         product:"red-sandle"
+    //       }
         
-      ];
+    //   ];
+
+        const besSell = useAppSelector((state)=>state.product.slice(0, 9));
+      
 
     // Carousel Setting
     const settings = {
@@ -129,16 +131,17 @@ const FeaturedProduct = () => {
 
       {/* Carousel */}
       <Slider {...settings}>
-      {SellingCards.map((selling, index) => (
+      {besSell.map((selling:any, index) => (
           <BestSellingCards
             key={index}
-            image={selling.image}
-            alt={selling.alt}
+            image={selling.image[0]}
+            alt={selling.title}
             title={selling.title}
             description={selling.description}
             price={selling.price}
             category={selling.category}
-            product={selling.product}
+            slug={selling.slug}
+            discount={selling.discount}
           />
         ))}
       </Slider>

@@ -1,42 +1,45 @@
+"use client"
 import React from "react";
 import BestSellingCards from "./BestSellingCards";
 
-import womenWhiteShirt from "../../public/best-selling/womenWhiteShirt.webp";
-import blackJacket from "../../public/best-selling/blackJacket.webp";
-import redSandles from "../../public/best-selling/redSandles.jpg";
+import { useAppSelector } from "@/app/store/hooks";
 
-const SellingCards = [
-  {
-    image: womenWhiteShirt,
-    alt: "Women-White-Shirt",
-    title: "Women White Printed Shirt",
-    description: "Best Quality Top For Women.",
-    price: 100,
-    category: "tops",
-    product:"white-top"
-  },
-  {
-    image: blackJacket,
-    alt: "Men-Black-Jacket",
-    title: "Men Black Jacket",
-    description: "Best Quality Jacket For Mens.",
-    price: 120,
-     category: "shirts",
-    product:"black-jacket"
-  },
-  {
-    image: redSandles,
-    alt: "Women-red-sandles",
-    title: "Women Red Sandle",
-    description: "Best Quality Sandle For Women.",
-    price: 130,
-     category: "women-shoes",
-    product:"red-sandle"
-  }
+// const SellingCards = [
+//   {
+//     image: womenWhiteShirt,
+//     alt: "Women-White-Shirt",
+//     title: "Women White Printed Shirt",
+//     description: "Best Quality Top For Women.",
+//     price: 100,
+//     category: "tops",
+//     product:"white-top"
+//   },
+//   {
+//     image: blackJacket,
+//     alt: "Men-Black-Jacket",
+//     title: "Men Black Jacket",
+//     description: "Best Quality Jacket For Mens.",
+//     price: 120,
+//      category: "shirts",
+//     product:"black-jacket"
+//   },
+//   {
+//     image: redSandles,
+//     alt: "Women-red-sandles",
+//     title: "Women Red Sandle",
+//     description: "Best Quality Sandle For Women.",
+//     price: 130,
+//      category: "women-shoes",
+//     product:"red-sandle"
+//   }
   
-];
+// ];
 
 const BestSelling = () => {
+  const product = useAppSelector((state)=>state.product);
+const bestSell = product.slice(0, 3)
+
+
   return (
     <div className="mb-[100px] mt-[100px]">
       {/* Heading */}
@@ -53,16 +56,17 @@ const BestSelling = () => {
       {/* Best Selling Products Cards */}
 
       <div className="flex flex-wrap justify-center gap-5">
-        {SellingCards.map((selling, index) => (
+        {bestSell.map((selling:any, index:number) => (
           <BestSellingCards
             key={index}
-            image={selling.image}
-            alt={selling.alt}
+            image={selling.image[0]}
+            alt={selling.title}
             title={selling.title}
             description={selling.description}
             price={selling.price}
             category={selling.category}
-            product={selling.product}
+            slug={selling.slug}
+            discount={selling.discount}
           />
         ))}
       </div>
