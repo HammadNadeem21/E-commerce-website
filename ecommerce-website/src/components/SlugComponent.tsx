@@ -1,11 +1,13 @@
 "use client";
-
+import fallbackImage from "../../public/hero.jpg";
 import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 
-const SlugComponent = ({
-  image,
-}: string | string[] | StaticImageData | any) => {
+interface SlugComponentProps {
+  image?: string | string[] | StaticImageData;
+}
+
+const SlugComponent:React.FC<SlugComponentProps> = ({ image }) => {
   const [path, setPath] = useState("");
 
   return (
@@ -15,11 +17,16 @@ const SlugComponent = ({
         width={400}
         height={400}
         className="h-[450px] rounded-lg"
-        src={path ? path : image[0]}
+        src={path 
+          ? path 
+          : Array.isArray(image) 
+            ? image[0] 
+            : image || fallbackImage}
       />
 
       <div className="flex items-center justify-center gap-4 mx-auto mt-2">
-        {image.map((item: string, i: number) => (
+        {Array.isArray(image) &&
+        image.map((item: string, i: number) => (
           <div key={i} className="cursor-pointer w-[100px]">
             <Image
               alt="abc"
@@ -31,8 +38,6 @@ const SlugComponent = ({
             />
           </div>
         ))}
-
-     
       </div>
     </div>
   );

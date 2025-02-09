@@ -3,6 +3,7 @@ import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import fallbackImage from "../../public/hero.jpg";
 
 import BestSellingCards from './BestSellingCards';
 import { useAppSelector } from '@/app/store/hooks';
@@ -131,17 +132,17 @@ const FeaturedProduct = () => {
 
       {/* Carousel */}
       <Slider {...settings}>
-      {besSell.map((selling:any, index) => (
+      {besSell.map((selling, index) => (
           <BestSellingCards
             key={index}
-            image={selling.image[0]}
+            image={Array.isArray(selling.image) ? selling.image[0] : selling.image || fallbackImage}
             alt={selling.title}
             title={selling.title}
             description={selling.description}
             price={selling.price}
             category={selling.category}
             slug={selling.slug}
-            discount={selling.discount}
+            discount={selling.discount ?? 0}
           />
         ))}
       </Slider>

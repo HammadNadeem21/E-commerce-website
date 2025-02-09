@@ -1,6 +1,8 @@
 "use client"
 import React from "react";
 import BestSellingCards from "./BestSellingCards";
+import fallbackImage from "../../public/hero.jpg";
+
 
 import { useAppSelector } from "@/app/store/hooks";
 
@@ -56,17 +58,17 @@ const bestSell = product.slice(0, 3)
       {/* Best Selling Products Cards */}
 
       <div className="flex flex-wrap justify-center gap-5">
-        {bestSell.map((selling:any, index:number) => (
+        {bestSell.map((selling, index:number) => (
           <BestSellingCards
             key={index}
-            image={selling.image[0]}
+            image={Array.isArray(selling.image) ? selling.image[0] : selling.image || fallbackImage}
             alt={selling.title}
             title={selling.title}
             description={selling.description}
             price={selling.price}
             category={selling.category}
             slug={selling.slug}
-            discount={selling.discount}
+            discount={selling.discount ?? 0}
           />
         ))}
       </div>

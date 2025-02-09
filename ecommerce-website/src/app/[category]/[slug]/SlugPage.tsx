@@ -15,7 +15,7 @@ const SlugPage = ({ params }: { params: { slug: string } }) => {
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           {/* Image */}
-          <SlugComponent image={slug[0].image}/>
+          <SlugComponent image={slug[0].image }/>
 
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             {/* category */}
