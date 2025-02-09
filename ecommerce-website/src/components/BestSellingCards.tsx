@@ -54,13 +54,13 @@ const BestSellingCards = ({
           <div className="flex gap-3">
             <p
               className={`mt-2 scroll-m-20 text-base text-myBlackHead font-semibold tracking-tight  line-clamp-1 ${
-                discount > 1 &&
+                discount > 0 &&
                 "line-through decoration-2  decoration-myOrange/70"
               }`}
             >${price}</p>
             {/* Discounted value */}
             {
-              discount > 1 && (
+              discount > 0 && (
                 <p className="mt-2 scroll-m-20 text-base text-myBlackHead font-semibold tracking-tight  line-clamp-1">${price - (price*discount)/100}</p>
               )
             }
